@@ -5,6 +5,11 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * Created by Mark Russo and Kyle Horton
+ * April 16, 2018
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
