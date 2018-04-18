@@ -4,6 +4,7 @@
     <string name="favorites">Favorites</string>
     <string name="add_favorites">Add Favorites</string>
     <string name="share">Share</string>
+    <string name="titleSPlash">Russo \n \t Horton  \n \t \t Technologies</string>
     <string-array name="genres">
         <item>Movie</item>
         <item>TV Show</item>

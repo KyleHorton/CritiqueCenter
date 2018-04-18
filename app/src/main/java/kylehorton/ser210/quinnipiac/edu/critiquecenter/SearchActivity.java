@@ -1,6 +1,7 @@
 package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -56,8 +58,11 @@ public class SearchActivity extends AppCompatActivity {
                 genre = spinner.getSelectedItem().toString(); //converts selected genre to string
                 Log.d(genre, "onClick: " + genre);
 
-                EditText searchedItem = (EditText) findViewById(R.id.editText);
-                search = searchedItem.getText().toString();
+                SearchView searchedItem = (SearchView) findViewById(R.id.search_View);
+                search = searchedItem.getQuery().toString();
+                searchedItem.setIconified(false);
+
+                //search = searchedItem.getText().toString();
 
                 if (!search.equals("")) {
                     AsyncClass async = new AsyncClass();

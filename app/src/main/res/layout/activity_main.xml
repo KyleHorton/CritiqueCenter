@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/splash" />
+        app:srcCompat="@mipmap/splash" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,10 +20,20 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="153dp"
-        android:text="RUSSO HORTON TECHNOLOGIES"
+        android:text="@string/titleSPlash"
         android:textAllCaps="true"
         android:textColor="#ffff"
         android:textSize="25dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:id="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/loading"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        app:srcCompat="@mipmap/loading" />
 
 </RelativeLayout>
