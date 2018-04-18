@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="kylehorton.ser210.quinnipiac.edu.critiquecenter.ReviewActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+    <TextView
+        android:id="@+id/genreSearched"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Genre"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textColor="#000000"/>
+    
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+    
+    <TextView
+        android:id="@+id/itemSearched"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:text="Searched Item"
+        android:gravity="center"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+    
+    <TextView
+        android:id="@+id/review"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:text="Your review is loading..."/>
+
+</LinearLayout>
+</ScrollView>
