@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">CritiqueCenter</string>
+    <string name="settings">Settings</string>
+    <string name="favorites">Favorites</string>
+    <string name="add_favorites">Add Favorites</string>
+    <string name="share">Share</string>
     <string-array name="genres">
         <item>Movie</item>
         <item>TV Show</item>
-        <item>album</item>
+        <item>Album</item>
     </string-array>
 </resources>

@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/homescreen"
     tools:context="kylehorton.ser210.quinnipiac.edu.critiquecenter.HomeScreenActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/homescreen"
-        android:scaleType="fitXY" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
 
     <Button
         android:id="@+id/settings"
@@ -19,7 +18,7 @@
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="SETTINGS" />
+        android:text="@string/settings" />
 
     <Button
         android:id="@+id/about"
@@ -49,13 +48,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/favorites"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbar"
         android:layout_marginEnd="52dp"
         android:layout_marginTop="47dp"
         android:text="CRITIQUE CENTER"
         android:textColor="#ffff"
-        android:textStyle="bold"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -30,13 +30,22 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        if (SearchActivity.genre.equals("Movie")) {
+            genre = "movie";
+        } else if (SearchActivity.genre.equals("TV Show")){
+            genre = "tvshow";
+        } else {
+            genre = "album";
+        }
     }
 
     @Override
     protected String doInBackground(Void... params) {
 
+
         search = SearchActivity.search;
-        genre = SearchActivity.genre;
+
         Log.d(TAG, "Searched: "+ search);
         Log.d(TAG, "Genre: " + genre);
 
@@ -45,7 +54,7 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
 
         // try catch block to receive the API data
         try {
-            url = new URL("https://api-marcalencc-metacritic-v1.p.mashape.com/search/" + search + "/" + genre + "?limit=20&offset=1&mashape-key=IOCYZerEwKmshut8w5RvcY6usvyEp1l1U8kjsnaFeBQjtAfcC9");
+            url = new URL("https://api-marcalencc-metacritic-v1.p.mashape.com/search/" + search + "/" + genre + "?limit=1&offset=1&mashape-key=IOCYZerEwKmshut8w5RvcY6usvyEp1l1U8kjsnaFeBQjtAfcC9");
             connection = (HttpURLConnection) url.openConnection();
 
             InputStream inputStream = connection.getInputStream();

@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //splash screen shown
         int secondsDelayed = 5;
         new Handler().postDelayed(new Runnable() {
