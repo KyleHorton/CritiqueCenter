@@ -22,6 +22,7 @@ import org.w3c.dom.Text;
 public class HomeScreenActivity extends AppCompatActivity {
 
     private Button review;
+    private Button favorites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,21 @@ public class HomeScreenActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        favorites = (Button) findViewById(R.id.favorites);
+        favorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, FavoritesActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
+
+
+
 
     // adds menu
     @Override
