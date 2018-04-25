@@ -46,7 +46,7 @@ public class FontActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.favorites){
 
         }
-        if (item.getItemId() == R.id.add_favorites){
+        if (item.getItemId() == R.id.add_fav){
             Toast.makeText(FontActivity.this, "No review to add to favorites!",
                     Toast.LENGTH_LONG).show();
         }

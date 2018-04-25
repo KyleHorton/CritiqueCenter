@@ -5,7 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 public class FavoritesSQL extends SQLiteOpenHelper {
     public static final String MY_TABLE = "review_table";
@@ -59,6 +63,25 @@ public class FavoritesSQL extends SQLiteOpenHelper {
     public void delete(String favorite) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(MY_TABLE, ID1 + "=?", new String[]{favorite});
-        db.close();
+    }
+
+    // deletes all rows from table database
+    public void deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(MY_TABLE, null, null);
+    }
+
+
+    /**
+     * Returns only the ID that matches the name passed in
+     * @param name
+     * @return
+     */
+    public Cursor getItemID(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + ID1 + " FROM " + MY_TABLE +
+                " WHERE " + ID2 + " = '" + name + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
     }
 }

@@ -45,7 +45,7 @@ public class AboutActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.settings){
 
         }
-        if (item.getItemId() == R.id.add_favorites){
+        if (item.getItemId() == R.id.add_fav){
             Toast.makeText(AboutActivity.this, "No review to add to favorites!",
                     Toast.LENGTH_LONG).show();
         }

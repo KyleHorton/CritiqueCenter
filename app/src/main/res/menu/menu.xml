@@ -14,7 +14,7 @@
         app:showAsAction="ifRoom"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
     <item
-        android:id="@+id/add_favorites"
+        android:id="@+id/add_fav"
         android:title="@string/add_favorites"
         android:icon="@drawable/ic_add_white_24dp"
         android:orderInCategory="3"

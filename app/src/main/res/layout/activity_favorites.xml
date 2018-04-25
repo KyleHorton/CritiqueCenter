@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context="kylehorton.ser210.quinnipiac.edu.critiquecenter.FavoritesActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
 
     <TextView
         android:id="@+id/title"
@@ -13,8 +16,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="55dp"
         android:textSize="30dp"
         android:textStyle="bold"
         android:text="FAVORITES" />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/title"
+        android:id="@+id/listView"/>
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Delete Favorite" />
+
 </RelativeLayout>
