@@ -10,4 +10,10 @@
         <item>TV Show</item>
         <item>Album</item>
     </string-array>
+
+    <string name="about">About the Authors:
+    This application was created by Mark Russo and Kyle Horton</string>
+
+    <string name="api">The API used in this application is Metacritics
+    all reviews and ratings come from metacritic.com</string>
 </resources>

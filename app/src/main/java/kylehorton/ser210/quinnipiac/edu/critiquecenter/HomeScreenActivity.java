@@ -23,6 +23,8 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     private Button review;
     private Button favorites;
+    private Button about;
+    private Button settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,25 @@ public class HomeScreenActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        about = (Button) findViewById(R.id.about);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreenActivity.this, AboutActivity.class);
+
+            }
+        });
+
+        settings = (Button) findViewById(R.id.settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreenActivity.this, SettingsActivity.class);
+            }
+        });
+
     }
-
-
-
 
 
     // adds menu

@@ -22,7 +22,9 @@
         <activity android:name=".HomeScreenActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".ReviewActivity" />
-        <activity android:name=".FavoritesActivity"></activity>
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
