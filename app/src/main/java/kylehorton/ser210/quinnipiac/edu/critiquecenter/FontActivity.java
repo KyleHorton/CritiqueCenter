@@ -1,32 +1,30 @@
 package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class AboutActivity extends AppCompatActivity {
-    private TextView about1, about2;
+public class FontActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(SettingsActivity.currTheme);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_font);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        about1 = (TextView) findViewById(R.id.about1);
-        about1.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
-        about2 = (TextView) findViewById(R.id.about2);
-        about2.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
+        // creates back navigation
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
-
-
     // adds menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,18 +37,21 @@ public class AboutActivity extends AppCompatActivity {
     // each item has a specific action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
         if (item.getItemId() == R.id.favorites){
 
         }
-        if (item.getItemId() == R.id.settings){
-
-        }
         if (item.getItemId() == R.id.add_favorites){
-            Toast.makeText(AboutActivity.this, "No review to add to favorites!",
+            Toast.makeText(FontActivity.this, "No review to add to favorites!",
                     Toast.LENGTH_LONG).show();
         }
         if (item.getItemId() == R.id.share){
-            Toast.makeText(AboutActivity.this, "There's no review to share yet!",
+            Toast.makeText(FontActivity.this, "There's no review to share yet!",
                     Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);

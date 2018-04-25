@@ -7,6 +7,7 @@ public class FavoritesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(SettingsActivity.currTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
     }

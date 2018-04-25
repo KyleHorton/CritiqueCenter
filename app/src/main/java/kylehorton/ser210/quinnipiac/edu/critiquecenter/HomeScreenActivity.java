@@ -2,6 +2,8 @@ package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -21,21 +23,21 @@ import org.w3c.dom.Text;
 
 public class HomeScreenActivity extends AppCompatActivity {
 
-    private Button review;
-    private Button favorites;
-    private Button about;
-    private Button settings;
+    private Button review, favorites, about, settings;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(SettingsActivity.currTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //underlines the title on the home screen
-        TextView title = findViewById(R.id.title);
+        title = findViewById(R.id.title);
         title.setPaintFlags(title.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        title.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
 
         review = (Button) findViewById(R.id.find_review);
         review.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +64,8 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreenActivity.this, AboutActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -71,6 +75,8 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreenActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

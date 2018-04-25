@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#00f2ff"
     tools:context="kylehorton.ser210.quinnipiac.edu.critiquecenter.SearchActivity">
 
         <include

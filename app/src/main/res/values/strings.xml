@@ -1,14 +1,27 @@
 <resources>
     <string name="app_name">CritiqueCenter</string>
     <string name="settings">Settings</string>
+    <string name="setFont">Set Font</string>
     <string name="favorites">Favorites</string>
     <string name="add_favorites">Add Favorites</string>
     <string name="share">Share</string>
+    <string name="darkTheme">Dark Theme</string>
+    <string name="dayTheme">Day Theme</string>
+    <string name="defaultTheme">Default Theme</string>
+    <string name="previewTXT">Preview Text</string>
     <string name="titleSPlash">Russo \n \t Horton  \n \t \t Technologies</string>
     <string-array name="genres">
         <item>Movie</item>
         <item>TV Show</item>
         <item>Album</item>
+    </string-array>
+    <string-array name="fonts">
+        <item>Neon 80s</item>
+        <item>Super Mario</item>
+        <item>Apple Garamond</item>
+        <item>Blacklisted</item>
+        <item>Mexican Fiesta</item>
+        <item>College Collage</item>
     </string-array>
 
     <string name="about">About the Authors:

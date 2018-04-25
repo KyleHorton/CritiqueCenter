@@ -2,6 +2,7 @@ package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
@@ -25,9 +27,11 @@ public class SearchActivity extends AppCompatActivity {
     public static String search = "";
     private String reviewText = "";
     private Button searchButton;
+    private TextView searchTopic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(SettingsActivity.currTheme);
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -86,6 +90,9 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+
+        searchTopic = (TextView) findViewById(R.id.searchTopic);
+        searchTopic.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
     }
 
     // adds menu
@@ -110,6 +117,9 @@ public class SearchActivity extends AppCompatActivity {
 
         }
         if (item.getItemId() == R.id.settings){
+            Intent intent = new Intent(SearchActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
 
         }
         if (item.getItemId() == R.id.add_favorites){

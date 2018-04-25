@@ -24,7 +24,8 @@
         <activity android:name=".ReviewActivity" />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".FontActivity"></activity>
     </application>
 
 </manifest>

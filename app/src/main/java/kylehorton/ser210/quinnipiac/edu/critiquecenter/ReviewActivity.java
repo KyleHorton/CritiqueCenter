@@ -1,6 +1,7 @@
 package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,7 @@ public class ReviewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(SettingsActivity.currTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
 
@@ -31,11 +33,14 @@ public class ReviewActivity extends AppCompatActivity {
 
         genre = (TextView) findViewById(R.id.genreSearched);
         genre.setText(getIntent().getStringExtra("genreText"));
+        genre.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
         searched = (TextView) findViewById(R.id.itemSearched);
         searched.setText(getIntent().getStringExtra("searchedText"));
+        searched.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
         review = (TextView) findViewById(R.id.review);
         review.setText("Rating: " + getIntent().getStringExtra("reviewText"));
         review.setMovementMethod(new ScrollingMovementMethod());
+        review.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
     }
 
     // adds menu
@@ -68,6 +73,9 @@ public class ReviewActivity extends AppCompatActivity {
 
         }
         if (item.getItemId() == R.id.settings){
+            Intent intent = new Intent(ReviewActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
 
         }
         if (item.getItemId() == R.id.add_favorites){

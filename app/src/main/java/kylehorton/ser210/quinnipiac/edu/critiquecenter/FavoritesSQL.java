@@ -11,6 +11,7 @@ public class FavoritesSQL extends SQLiteOpenHelper {
     public static final String MY_TABLE = "review_table";
     public static final String ID1 = "ID";
     private static final String ID2 = "name";
+    private static final String ID3 = "genre";
     public static ArrayList list;
 
     //constructed required by helper

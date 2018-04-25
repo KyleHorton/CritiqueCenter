@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="kylehorton.ser210.quinnipiac.edu.critiquecenter.FontActivity">
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_neon"
+                android:layout_width="350dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                card_view:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@mipmap/neon" />
+
+                    <TextView
+                        android:id="@+id/font1"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Font: Neon 8s"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/desc1"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="The concept for this design was to be reminiscent of the neon lettering one often saw during the 1980s in many places."
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_mario"
+                android:layout_width="350dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                card_view:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/supermario" />
+
+                    <TextView
+                        android:id="@+id/font2"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Font: Super Mario"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/desc2"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="This font is representative of the same text found in the Super Mario video games."
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_apple"
+                android:layout_width="350dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                card_view:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="190dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/apple" />
+
+                    <TextView
+                        android:id="@+id/font3"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Font: Apple Garamond"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/desc3"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="A very clean and professional font."
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_blacklisted"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                card_view:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@mipmap/blacklisted" />
+
+                    <TextView
+                        android:id="@+id/font4"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Font: Blacklisted"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/desc4"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="A fancy, distored font."
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_mexican"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                card_view:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@mipmap/mexican_fiesta" />
+
+                    <TextView
+                        android:id="@+id/font5"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Font: Mexican Fiesta"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/desc5"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Brings to life a foreign look."
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_college"
+                android:layout_width="350dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                card_view:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@mipmap/collegecollage" />
+
+                    <TextView
+                        android:id="@+id/font6"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="Font: College Collage"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/desc6"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Although you may not be able to read words in this font, it is a fun and sporty alternative."
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
