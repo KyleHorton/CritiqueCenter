@@ -66,8 +66,6 @@ public class SearchActivity extends AppCompatActivity {
                 search = searchedItem.getQuery().toString();
                 searchedItem.setIconified(false);
 
-                //search = searchedItem.getText().toString();
-
                 if (!search.equals("")) {
                     AsyncClass async = new AsyncClass();
                     try {
