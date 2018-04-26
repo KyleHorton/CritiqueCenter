@@ -54,12 +54,10 @@ public class FavoritesActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     private void populateListView() {
         Log.d(TAG, "populateListView: Displaying data in the ListView.");
-
         //get the data and append to a list
         Cursor data = sql.getData();
         ArrayList<String> listData = new ArrayList<>();

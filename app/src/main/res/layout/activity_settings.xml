@@ -118,17 +118,22 @@
 
                 <Button
                     android:id="@+id/previewText"
-                    android:layout_width="160dp"
+                    android:layout_width="140dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:text="Preview Fonts" />
+                    android:background="#ff9500"
+                    android:text="Preview Fonts"
+                    android:textColor="#fff" />
 
                 <Button
                     android:id="@+id/setText"
-                    android:layout_width="160dp"
+                    android:layout_width="140dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:text="Set Font"/>
+                    android:background="#ff9500"
+                    android:layout_marginLeft="10dp"
+                    android:text="Set Font"
+                    android:textColor="#fff" />
             </LinearLayout>
 
         </LinearLayout>
