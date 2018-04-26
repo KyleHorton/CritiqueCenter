@@ -66,7 +66,7 @@ public class SearchActivity extends AppCompatActivity {
                 search = searchedItem.getQuery().toString();
                 searchedItem.setIconified(false);
 
-                if (!search.equals("")) {
+                if (!search.equals("") && search.length() > 3) {
                     AsyncClass async = new AsyncClass();
                     try {
                         reviewText = async.execute().get();
@@ -82,7 +82,13 @@ public class SearchActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
 
-                } else {
+                } else if (search.length() <=3 && search.length() >0){
+                    Toast.makeText(SearchActivity.this, "Search query should be at least three characters!", // if search query less than 3 characters
+                            Toast.LENGTH_LONG).show();
+
+                }
+
+                else {
                     Toast.makeText(SearchActivity.this, "Please enter an item to search!", // if no item is entered but button still pressed
                             Toast.LENGTH_LONG).show();
                 }

@@ -81,12 +81,17 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
                     JSONObject jsonObject1 = jsonObject.getJSONObject("Rating");
                     rating = jsonObject1.getString("CriticRating");
 
-                }
-            }
+                    // if no rating
+                    if (rating.length() == 0){
+                        rating = "ERROR: Invalid Search! Please enter a different item or genre!";
+                    }
 
-            // if the array is empty
-            if (jsonArray.length() == 0){
-                rating = "ERROR: Invalid Search! Please enter a different topic!";
+                }
+
+                // if the array is empty
+                if (jsonArray1.length() == 0){
+                    rating = "ERROR: Invalid Search! Please enter a different item or genre!";
+                }
             }
 
         } catch (MalformedURLException e) {
