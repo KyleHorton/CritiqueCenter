@@ -18,7 +18,7 @@ public class AsyncClassTest {
         SearchActivity.genre = "Movie";
         String output = asyncClass.execute().get();
         Log.d(TAG, "onPostExecute: " + output);
-        assertEquals("51", output);
+        assertEquals("50", output);
     }
 
 }
