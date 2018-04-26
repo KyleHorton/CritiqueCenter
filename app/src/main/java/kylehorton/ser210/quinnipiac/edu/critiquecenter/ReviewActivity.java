@@ -2,8 +2,10 @@ package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
@@ -15,8 +17,7 @@ import android.widget.Toast;
 
 public class ReviewActivity extends AppCompatActivity {
     private TextView genre, searched, review;
-    private int rating;
-    private String ratingText;
+    private ShareActionProvider shareActionProvider;
     private Button favs;
     FavoritesSQL sql;
 
@@ -65,15 +66,17 @@ public class ReviewActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.share);
+        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
         return super.onCreateOptionsMenu(menu);
     }
 
     // sends the review using an intent
     private void setShareActionIntent(String text) {
-//        Intent intent = new Intent(Intent.ACTION_SEND);
-//        intent.setType("text/plain");
-//        intent.putExtra(Intent.EXTRA_TEXT, text);
-//        shareActionProvider.setShareIntent(intent);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        shareActionProvider.setShareIntent(intent);
     }
 
     // tells you which item from the toolbar is clicked on
@@ -102,6 +105,8 @@ public class ReviewActivity extends AppCompatActivity {
 
         }
         if (item.getItemId() == R.id.share){
+            setShareActionIntent("You should check out the " + SearchActivity.genre + " " + SearchActivity.search + ". It got a " +
+                    "rating of " + getIntent().getStringExtra("reviewText") + " from Metacritics!");
         }
         return super.onOptionsItemSelected(item);
     }
@@ -109,9 +114,9 @@ public class ReviewActivity extends AppCompatActivity {
     public void AddData(String newEntry) {
         boolean insertData = sql.addData(newEntry);
         if (insertData) {
-            toastMessage("This review was added to your favorites!");
+            toastMessage("Review added to your favorites!");
         } else {
-            toastMessage("Im sorry something went wrong");
+            toastMessage("ERROR: Value not found!");
         }
     }
 
