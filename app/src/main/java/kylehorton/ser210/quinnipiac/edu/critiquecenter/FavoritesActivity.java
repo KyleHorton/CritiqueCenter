@@ -23,6 +23,7 @@ public class FavoritesActivity extends AppCompatActivity {
     FavoritesSQL sql;
     private ListView mListView;
     private Button delete;
+    private Button deleteAll;
     private String itemDeleted;
 
     @Override
@@ -33,6 +34,7 @@ public class FavoritesActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.listView);
         sql = new FavoritesSQL(this);
         delete = (Button) findViewById(R.id.delete);
+        deleteAll = (Button) findViewById(R.id.deleteAll);
         populateListView();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,9 +49,20 @@ public class FavoritesActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sql.deleteEntry();
+                recreate();
+                populateListView();
+                Log.d(TAG, "Item deleted ");
+            }
+        });
+
+        deleteAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 sql.deleteAll();
                 recreate();
                 populateListView();
+                Log.d(TAG, "All items deleted ");
             }
         });
 
@@ -76,7 +89,6 @@ public class FavoritesActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + name);
-                itemDeleted = mListView.getItemAtPosition(i).toString();
 
                 Cursor data = sql.getItemID(name); //get the id associated with that name
                 int itemID = -1;

@@ -59,14 +59,9 @@ public class FavoritesSQL extends SQLiteOpenHelper {
         return data;
     }
 
-    //delete a single item from the data base
-    public void delete(String favorite) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(MY_TABLE, ID1 + "=?", new String[]{favorite});
-    }
 
     // deletes all rows from table database
-    public void deleteAll(){
+    public void deleteAll() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(MY_TABLE, null, null);
     }
@@ -74,14 +69,26 @@ public class FavoritesSQL extends SQLiteOpenHelper {
 
     /**
      * Returns only the ID that matches the name passed in
+     *
      * @param name
      * @return
      */
-    public Cursor getItemID(String name){
+    public Cursor getItemID(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + ID1 + " FROM " + MY_TABLE +
                 " WHERE " + ID2 + " = '" + name + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
+    }
+
+    //deleted first item in database
+    public void deleteEntry() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.query(MY_TABLE, null, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            long rowId = cursor.getLong(cursor.getColumnIndex(ID1));
+            database.delete(MY_TABLE, ID1 + "=" + rowId, null);
+        }
     }
 }
