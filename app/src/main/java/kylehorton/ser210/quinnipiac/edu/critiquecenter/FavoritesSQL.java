@@ -86,7 +86,7 @@ public class FavoritesSQL extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.query(MY_TABLE, null, null, null, null, null, null);
 
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToLast()) {
             long rowId = cursor.getLong(cursor.getColumnIndex(ID1));
             database.delete(MY_TABLE, ID1 + "=" + rowId, null);
         }
