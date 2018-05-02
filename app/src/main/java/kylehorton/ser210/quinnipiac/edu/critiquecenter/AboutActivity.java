@@ -20,12 +20,13 @@ public class AboutActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        about1 = (TextView) findViewById(R.id.about1);
+        about1 = (TextView) findViewById(R.id.authors);
         about1.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
         about2 = (TextView) findViewById(R.id.about2);
         about2.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
-    }
 
+        AboutFragment frag = (AboutFragment) getFragmentManager().findFragmentById(R.id.about_frag);
+    }
 
     // adds menu
     @Override

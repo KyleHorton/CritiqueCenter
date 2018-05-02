@@ -22,8 +22,6 @@ import org.w3c.dom.Text;
  */
 
 public class HomeScreenActivity extends AppCompatActivity {
-
-    private Button review, favorites, about, settings;
     private TextView title;
 
     @Override
