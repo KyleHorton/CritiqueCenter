@@ -34,54 +34,15 @@ public class HomeScreenActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //adds fragment to main activity
+        HomeScreenFragment frag = (HomeScreenFragment) getFragmentManager().findFragmentById(R.id.home_screen_frag);
+
         //underlines the title on the home screen
         title = findViewById(R.id.title);
         title.setPaintFlags(title.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         title.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
 
-        review = (Button) findViewById(R.id.find_review);
-        review.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeScreenActivity.this, SearchActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        favorites = (Button) findViewById(R.id.favorites);
-        favorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeScreenActivity.this, FavoritesActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        about = (Button) findViewById(R.id.about);
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeScreenActivity.this, AboutActivity.class);
-                startActivity(intent);
-                finish();
-
-            }
-        });
-
-        settings = (Button) findViewById(R.id.settings);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeScreenActivity.this, SettingsActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
     }
-
 
     // adds menu
     @Override

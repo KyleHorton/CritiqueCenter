@@ -4,66 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/homescreen"
+    android:orientation="horizontal"
     tools:context="kylehorton.ser210.quinnipiac.edu.critiquecenter.HomeScreenActivity">
 
-    <RelativeLayout
+    <fragment
+        android:id="@+id/home_screen_frag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_main" />
-
-
-
-    <Button
-        android:id="@+id/settings"
-        android:layout_width="190dp"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:text="@string/settings" />
-
-    <Button
-        android:id="@+id/about"
-        android:layout_width="190dp"
-        android:layout_height="100dp"
-       android:layout_toRightOf="@id/settings"
-        android:layout_alignParentBottom="true"
-        android:text="ABOUT" />
-
-    <Button
-        android:id="@+id/find_review"
-        android:layout_width="190dp"
-        android:layout_height="100dp"
-        android:layout_above="@id/settings"
-        android:text="FIND REVIEW" />
-
-    <Button
-        android:id="@+id/favorites"
-        android:layout_width="190dp"
-        android:layout_height="100dp"
-        android:layout_above="@id/about"
-        android:layout_toRightOf="@id/find_review"
-        android:text="FAVORITES" />
-
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/favorites"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginEnd="69dp"
-        android:layout_marginTop="47dp"
-        android:text="CRITIQUE CENTER"
-        android:textColor="#ffff"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-</RelativeLayout>
-
-
+        android:layout_height="match_parent"
+        class="kylehorton.ser210.quinnipiac.edu.critiquecenter.HomeScreenFragment"
+        />
 
 </LinearLayout>

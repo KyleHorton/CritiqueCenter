@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/homescreen"
+    tools:context=".HomeScreenFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main" />
+
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="190dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/settings" />
+
+    <Button
+        android:id="@+id/about"
+        android:layout_width="190dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@id/settings"
+        android:layout_alignParentBottom="true"
+        android:text="ABOUT" />
+
+    <Button
+        android:id="@+id/find_review"
+        android:layout_width="190dp"
+        android:layout_height="100dp"
+        android:layout_above="@id/settings"
+        android:text="FIND REVIEW" />
+
+    <Button
+        android:id="@+id/favorites"
+        android:layout_width="190dp"
+        android:layout_height="100dp"
+        android:layout_above="@id/about"
+        android:layout_toRightOf="@id/find_review"
+        android:text="FAVORITES" />
+
+
+</RelativeLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="47dp"
+        android:text="CRITIQUE CENTER"
+        android:textColor="#ffff"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+</FrameLayout>

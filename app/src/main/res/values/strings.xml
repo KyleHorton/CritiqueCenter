@@ -29,4 +29,7 @@
 
     <string name="api">The API used in this application is Metacritics
     all reviews and ratings come from metacritic.com</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
