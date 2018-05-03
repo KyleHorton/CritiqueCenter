@@ -28,6 +28,12 @@ public class AboutActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // creates back navigation
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         //sets the text theme
         about1 = (TextView) findViewById(R.id.authors);
         about1.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
@@ -49,6 +55,12 @@ public class AboutActivity extends AppCompatActivity {
     // each item has a specific action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(this, HomeScreenActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
         if (item.getItemId() == R.id.favorites){
             Intent intent = new Intent(AboutActivity.this, FavoritesActivity.class);
             startActivity(intent);
