@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Button darkBTN, dayBTN, defaultBTN, previewText,setText;
+    private Button darkBTN, dayBTN, defaultBTN, previewText, setText;
     public static int currTheme = R.style.AppTheme;
     private String chosenFont = "";
     public static String currText = "applegaramond.ttf";
@@ -104,32 +104,32 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 chosenFont = spinner.getSelectedItem().toString();
 
-                if (chosenFont.equals("Neon 80s")){
+                if (chosenFont.equals("Neon 80s")) {
                     currText = "neon.ttf";
                     recreate();
 
                 }
-                if (chosenFont.equals("Super Mario")){
+                if (chosenFont.equals("Super Mario")) {
                     currText = "supermario.ttf";
                     recreate();
 
                 }
-                if (chosenFont.equals("Apple Garamond")){
+                if (chosenFont.equals("Apple Garamond")) {
                     currText = "applegaramond.ttf";
                     recreate();
 
                 }
-                if (chosenFont.equals("Blacklisted")){
+                if (chosenFont.equals("Blacklisted")) {
                     currText = "blacklisted.ttf";
                     recreate();
 
                 }
-                if (chosenFont.equals("Mexican Fiesta")){
+                if (chosenFont.equals("Mexican Fiesta")) {
                     currText = "mexicanfiesta.ttf";
                     recreate();
 
                 }
-                if (chosenFont.equals("College Collage")){
+                if (chosenFont.equals("College Collage")) {
                     currText = "collegecollage.ttf";
                     recreate();
                 }
@@ -157,19 +157,19 @@ public class SettingsActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.favorites){
+        if (item.getItemId() == R.id.favorites) {
             Intent intent = new Intent(SettingsActivity.this, FavoritesActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.settings){
+        if (item.getItemId() == R.id.settings) {
             Intent intent = new Intent(SettingsActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.share){
+        if (item.getItemId() == R.id.share) {
             Toast.makeText(SettingsActivity.this, "There's no review to share yet!",
                     Toast.LENGTH_LONG).show();
         }

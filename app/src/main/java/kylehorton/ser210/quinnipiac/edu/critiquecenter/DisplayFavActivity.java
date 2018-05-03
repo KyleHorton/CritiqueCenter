@@ -38,7 +38,7 @@ public class DisplayFavActivity extends AppCompatActivity {
         database = new FavoritesSQL(this);
 
         //changes text and theme
-        rating = (TextView)findViewById(R.id.textRating);
+        rating = (TextView) findViewById(R.id.textRating);
         rating.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
         rating.setMovementMethod(new ScrollingMovementMethod());
         rating.setText(getIntent().getStringExtra("rating"));
@@ -98,25 +98,25 @@ public class DisplayFavActivity extends AppCompatActivity {
     // each item has a specific action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.favorites){
+        if (item.getItemId() == R.id.favorites) {
             Intent intent = new Intent(DisplayFavActivity.this, FavoritesActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.settings){
+        if (item.getItemId() == R.id.settings) {
             Intent intent3 = new Intent(this, SettingsActivity.class);
             startActivity(intent3);
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.share){
+        if (item.getItemId() == R.id.share) {
             setShareActionIntent("You should check out the " + SearchActivity.genre + " " + SearchActivity.search + ". It got a " +
                     "rating of " + getIntent().getStringExtra("reviewText") + " from Metacritics!");
 

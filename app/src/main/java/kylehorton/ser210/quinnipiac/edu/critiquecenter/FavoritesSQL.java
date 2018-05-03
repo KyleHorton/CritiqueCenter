@@ -25,8 +25,8 @@ public class FavoritesSQL extends SQLiteOpenHelper {
     public static ArrayList<String> listData; // public variable is needed to access database
 
     //constructor
-    public FavoritesSQL(Context context){
-        super(context, DB_NAME,null, DB_VERSION);
+    public FavoritesSQL(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
     // creates the table database
@@ -47,7 +47,7 @@ public class FavoritesSQL extends SQLiteOpenHelper {
     }
 
     // adds the data to the table
-    public boolean addData(String item){
+    public boolean addData(String item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues favoriteValues = new ContentValues();
         favoriteValues.put(COL1, item);
@@ -55,7 +55,7 @@ public class FavoritesSQL extends SQLiteOpenHelper {
         long result = db.insert(DB_NAME, null, favoriteValues);
 
         // checks to see if data was added to database correctly
-        if (result == -1){
+        if (result == -1) {
             return false;
         } else {
             return true;
@@ -63,7 +63,7 @@ public class FavoritesSQL extends SQLiteOpenHelper {
     }
 
     //returns all data from database
-    public Cursor getData(){
+    public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + DB_NAME;
         Cursor data = db.rawQuery(query, null);
@@ -71,24 +71,24 @@ public class FavoritesSQL extends SQLiteOpenHelper {
     }
 
     // deletes a specific joke from table database
-    public void deleteRating(String rating){
+    public void deleteRating(String rating) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DB_NAME, "rating = ?", new String[]{rating});
 
     }
 
     // deletes all rows from table database
-    public void deleteAll(){
+    public void deleteAll() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DB_NAME, null, null);
     }
 
     // fills the ArrayList with data from the table database
-    public void populate(){
+    public void populate() {
         //get data and append it to the list
         Cursor data = getData();
         listData = new ArrayList<>();
-        while (data.moveToNext()){
+        while (data.moveToNext()) {
             // get data from column 1
             // add it to list
             listData.add(data.getString(1));

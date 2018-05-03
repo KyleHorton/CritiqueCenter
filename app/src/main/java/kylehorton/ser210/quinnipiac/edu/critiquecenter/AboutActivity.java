@@ -61,19 +61,19 @@ public class AboutActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.favorites){
+        if (item.getItemId() == R.id.favorites) {
             Intent intent = new Intent(AboutActivity.this, FavoritesActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.settings){
+        if (item.getItemId() == R.id.settings) {
             Intent intent = new Intent(AboutActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.share){
+        if (item.getItemId() == R.id.share) {
             Toast.makeText(AboutActivity.this, "There's no review to share yet!",
                     Toast.LENGTH_LONG).show();
         }

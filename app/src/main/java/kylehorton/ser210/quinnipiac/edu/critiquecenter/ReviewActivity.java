@@ -92,10 +92,10 @@ public class ReviewActivity extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.favorites) {
-                sql.populate();
-                Intent intent = new Intent(ReviewActivity.this, FavoritesActivity.class);
-                startActivity(intent);
-                finish();
+            sql.populate();
+            Intent intent = new Intent(ReviewActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+            finish();
 
         }
         if (item.getItemId() == R.id.settings) {

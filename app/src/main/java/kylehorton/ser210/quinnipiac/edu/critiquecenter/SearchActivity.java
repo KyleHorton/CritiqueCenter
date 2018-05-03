@@ -89,13 +89,11 @@ public class SearchActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
 
-                } else if (search.length() <=3 && search.length() >0){
+                } else if (search.length() <= 3 && search.length() > 0) {
                     Toast.makeText(SearchActivity.this, "Search query should be at least three characters!", // if search query less than 3 characters
                             Toast.LENGTH_LONG).show();
 
-                }
-
-                else {
+                } else {
                     Toast.makeText(SearchActivity.this, "Please enter an item to search!", // if no item is entered but button still pressed
                             Toast.LENGTH_LONG).show();
                 }
@@ -124,19 +122,19 @@ public class SearchActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.favorites){
+        if (item.getItemId() == R.id.favorites) {
             Intent intent = new Intent(SearchActivity.this, FavoritesActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.settings){
+        if (item.getItemId() == R.id.settings) {
             Intent intent = new Intent(SearchActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.share){
+        if (item.getItemId() == R.id.share) {
             Toast.makeText(SearchActivity.this, "There's no review to share yet!",
                     Toast.LENGTH_LONG).show();
         }

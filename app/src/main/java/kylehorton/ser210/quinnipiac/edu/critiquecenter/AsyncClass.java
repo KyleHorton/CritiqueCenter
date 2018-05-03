@@ -44,7 +44,7 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
     protected void onPreExecute() {
         super.onPreExecute();
 
-        // Checks array adapter for movie tv show or album
+        // Checks spinner for movie tv show or album
         if (SearchActivity.genre.equals("Movie")) {
             genre = "movie";
             isMovie = true;
@@ -57,6 +57,7 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
         }
     }
 
+    //API calls
     @Override
     protected String doInBackground(Void... params) {
         search = SearchActivity.search;
@@ -109,14 +110,14 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
             Log.d(TAG, "Director: " + director);
 
             // if no rating
-            if (cRating.equals("")){
+            if (cRating.equals("")) {
                 display = "ERROR: ITEM NOT FOUND!";
-            } else{
+            } else {
                 display = "Title: " + title + '\n' + "Director: " + director + '\n' + "Release Date: " + release + '\n' + "MetaCritic Rating: " + cRating + '\n' + "User Rating: " + uRating;
             }
             return display;
         }
-        if (isTV){
+        if (isTV) {
 
             // try catch block to receive the API data
             try {
@@ -160,15 +161,15 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
             Log.d(TAG, "Studio: " + studio);
 
             // if no rating
-            if (cRating.equals("")){
+            if (cRating.equals("")) {
                 display = "ERROR: ITEM NOT FOUND!";
-            } else{
+            } else {
                 display = "Title: " + title + '\n' + "Studio: " + studio + '\n' + "Release Date: " + release + '\n' + "MetaCritic Rating: " + cRating + '\n' + "User Rating: " + uRating;
             }
             return display;
 
         }
-        if (isAlbum){
+        if (isAlbum) {
 
             // try catch block to receive the API data
             try {
@@ -212,9 +213,9 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
             Log.d(TAG, "Primary Artist: " + artist);
 
             // if no rating
-            if (cRating.equals("")){
+            if (cRating.equals("")) {
                 display = "ERROR: ITEM NOT FOUND!";
-            } else{
+            } else {
                 display = "Title: " + title + '\n' + "Primary Artist: " + artist + '\n' + "Release Date: " + release + '\n' + "MetaCritic Rating: " + cRating + '\n' + "User Rating: " + uRating;
             }
             return display;
@@ -226,6 +227,5 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
     }
 }

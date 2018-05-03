@@ -58,13 +58,13 @@ public class HomeScreenActivity extends AppCompatActivity {
     // each item has a specific action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.settings){
+        if (item.getItemId() == R.id.settings) {
             Intent intent = new Intent(HomeScreenActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.share){
+        if (item.getItemId() == R.id.share) {
             Toast.makeText(HomeScreenActivity.this, "There's no review to share yet!",
                     Toast.LENGTH_LONG).show();
         }

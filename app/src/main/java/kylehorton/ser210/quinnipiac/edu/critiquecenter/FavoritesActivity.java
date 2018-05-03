@@ -21,10 +21,9 @@ import java.util.ArrayList;
 public class FavoritesActivity extends AppCompatActivity {
     private static final String TAG = "ListDataActivity";
     FavoritesSQL sql;
-   private ListView mListView;
+    private ListView mListView;
     private Button delete;
     private Button deleteAll;
-    private String itemDeleted;
     private String rating = "";
 
     @Override
@@ -37,11 +36,12 @@ public class FavoritesActivity extends AppCompatActivity {
         delete = (Button) findViewById(R.id.delete);
         deleteAll = (Button) findViewById(R.id.deleteAll);
 
+        //adds toolbar to the activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         sql.populate();
 
-        if (FavoritesSQL.listData.size() == 0){
+        if (FavoritesSQL.listData.size() == 0) {
             mListView.setEmptyView(findViewById(R.id.empty));
         } else {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -96,13 +96,13 @@ public class FavoritesActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.settings){
+        if (item.getItemId() == R.id.settings) {
             Intent intent = new Intent(FavoritesActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.share){
+        if (item.getItemId() == R.id.share) {
             Toast.makeText(FavoritesActivity.this, "There's no review to share yet!",
                     Toast.LENGTH_LONG).show();
         }
