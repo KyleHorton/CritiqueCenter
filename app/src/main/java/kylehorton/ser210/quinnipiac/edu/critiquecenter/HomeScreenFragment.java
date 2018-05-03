@@ -13,14 +13,20 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
  */
+
 public class HomeScreenFragment extends Fragment {
     private Button review, favorites, about, settings;
     private TextView title;
+
+
     public HomeScreenFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,6 +34,7 @@ public class HomeScreenFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_home_screen, container, false);
         super.onCreate(savedInstanceState);
 
+        //sets on click listeners for all the buttons on the home screen
         review = (Button) rootView.findViewById(R.id.find_review);
         review.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +74,5 @@ public class HomeScreenFragment extends Fragment {
         });
         // Inflate the layout for this fragment
         return rootView;
-       // return inflater.inflate(R.layout.fragment_home_screen, container, false);
     }
 }

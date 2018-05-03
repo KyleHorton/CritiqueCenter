@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
  */
 public class AboutFragment extends Fragment {
-
-
     public AboutFragment() {
         // Required empty public constructor
     }
@@ -25,5 +27,4 @@ public class AboutFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about, container, false);
     }
-
 }

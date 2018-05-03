@@ -16,7 +16,7 @@
 
     <TextView
         android:textColor="#000000"
-        android:id="@+id/textJoke"
+        android:id="@+id/textRating"
         android:text="Rating"
         android:gravity="center_horizontal"
         android:textSize="30dp"

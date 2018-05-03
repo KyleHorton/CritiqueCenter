@@ -17,8 +17,10 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 /**
- * Created by Mark Russo and Kyle Horton
- * April 16, 2018
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
  */
 
 public class HomeScreenActivity extends AppCompatActivity {

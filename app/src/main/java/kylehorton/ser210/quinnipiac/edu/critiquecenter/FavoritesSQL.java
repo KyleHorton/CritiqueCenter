@@ -11,6 +11,13 @@ import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
+/**
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
+ */
+
 public class FavoritesSQL extends SQLiteOpenHelper {
     private static final String DB_NAME = "favorites"; // name of the database
     private static final String COL1 = "rating"; // rating

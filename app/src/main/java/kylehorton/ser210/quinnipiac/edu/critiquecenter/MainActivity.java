@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
- * Created by Mark Russo and Kyle Horton
- * April 16, 2018
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //splash screen shown
+        //splash screen shown in seconds
         int secondsDelayed = 5;
         new Handler().postDelayed(new Runnable() {
             public void run() {

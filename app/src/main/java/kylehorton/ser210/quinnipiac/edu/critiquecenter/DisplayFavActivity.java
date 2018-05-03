@@ -14,6 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
+ */
+
 public class DisplayFavActivity extends AppCompatActivity {
     private TextView rating;
     private Button delete;
@@ -29,7 +36,9 @@ public class DisplayFavActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         database = new FavoritesSQL(this);
-        rating = (TextView)findViewById(R.id.textJoke);
+
+        //changes text and theme
+        rating = (TextView)findViewById(R.id.textRating);
         rating.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
         rating.setMovementMethod(new ScrollingMovementMethod());
         rating.setText(getIntent().getStringExtra("rating"));

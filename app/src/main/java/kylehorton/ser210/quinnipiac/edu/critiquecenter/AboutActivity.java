@@ -10,6 +10,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
+ */
+
 public class AboutActivity extends AppCompatActivity {
     private TextView about1, about2;
 
@@ -21,6 +28,7 @@ public class AboutActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //sets the text theme
         about1 = (TextView) findViewById(R.id.authors);
         about1.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
         about2 = (TextView) findViewById(R.id.about2);

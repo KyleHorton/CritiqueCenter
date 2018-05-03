@@ -18,7 +18,10 @@ import java.net.URL;
 import static android.content.ContentValues.TAG;
 
 /**
- * Created by Kyleh on 4/17/2018.
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
  */
 
 public class AsyncClass extends AsyncTask<Void, Void, String> {
@@ -41,6 +44,7 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
     protected void onPreExecute() {
         super.onPreExecute();
 
+        // Checks array adapter for movie tv show or album
         if (SearchActivity.genre.equals("Movie")) {
             genre = "movie";
             isMovie = true;
@@ -55,12 +59,9 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-
         search = SearchActivity.search;
-
         Log.d(TAG, "Searched: " + search);
         Log.d(TAG, "Genre: " + genre);
-
         HttpURLConnection connection = null;
         URL url = null;
 
@@ -219,7 +220,6 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
             return display;
 
         }
-
         return null;
     }
 

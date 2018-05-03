@@ -15,6 +15,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
+ */
 public class ReviewActivity extends AppCompatActivity {
     private TextView genre, searched, review;
     private ShareActionProvider shareActionProvider;
@@ -37,6 +43,7 @@ public class ReviewActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        //sets set and themes for all text and backgrounds
         genre = (TextView) findViewById(R.id.genreSearched);
         genre.setText(getIntent().getStringExtra("genreText"));
         genre.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));

@@ -8,6 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+/**
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
+ */
+
 public class FontActivity extends AppCompatActivity {
 
     @Override
@@ -25,6 +32,7 @@ public class FontActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
     }
+
     // adds menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

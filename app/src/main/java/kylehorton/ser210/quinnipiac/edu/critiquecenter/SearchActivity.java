@@ -21,6 +21,13 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Critique Center Application
+ * Authors : Mark Russo, Kyle Horton
+ * May 2, 2018
+ * SER210
+ */
+
 public class SearchActivity extends AppCompatActivity {
     private Spinner spinner;
     public static String genre = "";
