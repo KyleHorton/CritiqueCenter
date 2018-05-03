@@ -2,6 +2,7 @@
     <string name="app_name">CritiqueCenter</string>
     <string name="settings">Settings</string>
     <string name="setFont">Set Font</string>
+    <string name="delete">Delete Rating</string>
     <string name="favorites">Favorites</string>
     <string name="add_favorites">Add Favorites</string>
     <string name="share">Share</string>
@@ -25,10 +26,10 @@
     </string-array>
 
     <string name="about">About the Authors:
-    This application was created by Mark Russo and Kyle Horton</string>
+    This application was created by Mark Russo and Kyle Horton.</string>
 
     <string name="api">The API used in this application is Metacritics
-    all reviews and ratings come from metacritic.com</string>
+    all reviews and ratings come from metacritic.com.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

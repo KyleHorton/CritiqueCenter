@@ -44,11 +44,10 @@ public class FontActivity extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.favorites){
+            Intent intent = new Intent(FontActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+            finish();
 
-        }
-        if (item.getItemId() == R.id.add_fav){
-            Toast.makeText(FontActivity.this, "No review to add to favorites!",
-                    Toast.LENGTH_LONG).show();
         }
         if (item.getItemId() == R.id.share){
             Toast.makeText(FontActivity.this, "There's no review to share yet!",

@@ -21,10 +21,11 @@ import java.util.ArrayList;
 public class FavoritesActivity extends AppCompatActivity {
     private static final String TAG = "ListDataActivity";
     FavoritesSQL sql;
-    private ListView mListView;
+   private ListView mListView;
     private Button delete;
     private Button deleteAll;
     private String itemDeleted;
+    private String rating = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,70 +36,80 @@ public class FavoritesActivity extends AppCompatActivity {
         sql = new FavoritesSQL(this);
         delete = (Button) findViewById(R.id.delete);
         deleteAll = (Button) findViewById(R.id.deleteAll);
-        populateListView();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        sql.populate();
 
+        if (FavoritesSQL.listData.size() == 0){
+            mListView.setEmptyView(findViewById(R.id.empty));
+        } else {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, FavoritesSQL.listData);
+            mListView.setAdapter(adapter);
+        }
         // creates back navigation
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sql.deleteEntry();
-                recreate();
-                populateListView();
-                Log.d(TAG, "Item deleted ");
-            }
-        });
-
         deleteAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sql.deleteAll();
+                sql.populate();
                 recreate();
-                populateListView();
                 Log.d(TAG, "All items deleted ");
             }
         });
 
-
-    }
-
-    private void populateListView() {
-        Log.d(TAG, "populateListView: Displaying data in the ListView.");
-        //get the data and append to a list
-        Cursor data = sql.getData();
-        ArrayList<String> listData = new ArrayList<>();
-        while (data.moveToNext()) {
-            //get the value from the database in column 1
-            //then add it to the ArrayList
-            listData.add(data.getString(1));
-        }
-        //create the list adapter and set the adapter
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-        mListView.setAdapter(adapter);
-
-        //set an onItemClickListener to the ListView
+        //what to do if item clicked in list
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String name = adapterView.getItemAtPosition(i).toString();
-                Log.d(TAG, "onItemClick: You Clicked on " + name);
-
-                Cursor data = sql.getItemID(name); //get the id associated with that name
-                int itemID = -1;
-                while (data.moveToNext()) {
-                    itemID = data.getInt(0);
-                }
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                rating = mListView.getItemAtPosition(position).toString();
+                Intent intent = new Intent(FavoritesActivity.this, DisplayFavActivity.class);
+                intent.putExtra("rating", rating);
+                startActivity(intent);
+                finish();
             }
         });
+
+
     }
+
+//    private void populateListView() {
+//        Log.d(TAG, "populateListView: Displaying data in the ListView.");
+//        //get the data and append to a list
+//        Cursor data = sql.getData();
+//        ArrayList<String> listData = new ArrayList<>();
+//        while (data.moveToNext()) {
+//            //get the value from the database in column 1
+//            //then add it to the ArrayList
+//            listData.add(data.getString(1));
+//        }
+//        //create the list adapter and set the adapter
+//        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+//        mListView.setAdapter(adapter);
+//
+//        //set an onItemClickListener to the ListView
+//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String name = adapterView.getItemAtPosition(i).toString();
+//                Log.d(TAG, "onItemClick: You Clicked on " + name);
+//
+//                Cursor data = sql.getItemID(name); //get the id associated with that name
+//                int itemID = -1;
+//                while (data.moveToNext()) {
+//                    itemID = data.getInt(0);
+//                }
+//
+//            }
+//        });
+//    }
+
 
     // adds menu
     @Override
@@ -118,18 +129,11 @@ public class FavoritesActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.favorites){
-
-        }
         if (item.getItemId() == R.id.settings){
             Intent intent = new Intent(FavoritesActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
 
-        }
-        if (item.getItemId() == R.id.add_fav){
-            Toast.makeText(FavoritesActivity.this, "No review to add to favorites!",
-                    Toast.LENGTH_LONG).show();
         }
         if (item.getItemId() == R.id.share){
             Toast.makeText(FavoritesActivity.this, "There's no review to share yet!",

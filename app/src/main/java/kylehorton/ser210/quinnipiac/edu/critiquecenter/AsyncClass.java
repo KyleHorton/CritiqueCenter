@@ -23,9 +23,19 @@ import static android.content.ContentValues.TAG;
 
 public class AsyncClass extends AsyncTask<Void, Void, String> {
     String data = "";
-    String rating = "";
+    String cRating = "";
+    String uRating = "";
     String search = "";
     String genre = "";
+    String director = "";
+    String release = "";
+    String display = "";
+    String artist = "";
+    String studio = "";
+    String title = "";
+    boolean isMovie = false;
+    boolean isTV = false;
+    boolean isAlbum = false;
 
     @Override
     protected void onPreExecute() {
@@ -33,10 +43,13 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
 
         if (SearchActivity.genre.equals("Movie")) {
             genre = "movie";
-        } else if (SearchActivity.genre.equals("TV Show")){
+            isMovie = true;
+        } else if (SearchActivity.genre.equals("TV Show")) {
             genre = "tvshow";
+            isTV = true;
         } else {
             genre = "album";
+            isAlbum = true;
         }
     }
 
@@ -45,69 +58,174 @@ public class AsyncClass extends AsyncTask<Void, Void, String> {
 
         search = SearchActivity.search;
 
-        Log.d(TAG, "Searched: "+ search);
+        Log.d(TAG, "Searched: " + search);
         Log.d(TAG, "Genre: " + genre);
 
         HttpURLConnection connection = null;
         URL url = null;
 
-        // try catch block to receive the API data
-        try {
-            url = new URL("https://api-marcalencc-metacritic-v1.p.mashape.com/search/" + search + "/" + genre + "?limit=1&offset=1&mashape-key=IOCYZerEwKmshut8w5RvcY6usvyEp1l1U8kjsnaFeBQjtAfcC9");
-            connection = (HttpURLConnection) url.openConnection();
+        //if search is a movie
+        if (isMovie) {
 
-            InputStream inputStream = connection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line = "";
+            // try catch block to receive the API data
+            try {
+                url = new URL("https://api-marcalencc-metacritic-v1.p.mashape.com/movie/" + search + "/%7Byear%7D?mashape-key=J6MWOEOA8Jmshuu1yzdAszSfcbSMp1uhKuhjsna2IqKdjtZVrR");
+                connection = (HttpURLConnection) url.openConnection();
 
-            // reads in the text as a string
-            while (line != null) {
-                line = bufferedReader.readLine();
-                data = data + line;
-            }
+                InputStream inputStream = connection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String line = "";
 
-            // using the JSon libraries to parse the strings read in above
-            JSONArray jsonArray = new JSONArray(data);
-
-            // access array
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonArrayData = jsonArray.getJSONObject(i);
-
-                JSONArray jsonArray1 = jsonArrayData.getJSONArray("SearchItems");
-
-                // access second array to find rating
-                for (int x = 0; i < jsonArray1.length(); x++) {
-                    JSONObject jsonObject = jsonArray1.getJSONObject(x);
-                    JSONObject jsonObject1 = jsonObject.getJSONObject("Rating");
-                    rating = jsonObject1.getString("CriticRating");
-
-                    // if no rating
-                    if (rating.length() == 0){
-                        rating = "ERROR: Invalid Search! Please enter a different item or genre!";
-                    }
-
+                // reads in the text as a string
+                while (line != null) {
+                    line = bufferedReader.readLine();
+                    data = data + line;
                 }
 
-                // if the array is empty
-                if (jsonArray1.length() == 0){
-                    rating = "ERROR: Invalid Search! Please enter a different item or genre!";
-                }
-            }
+                JSONArray jsonArray = new JSONArray(data);
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+                // access array
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonArrayData = jsonArray.getJSONObject(i);
+                    title = jsonArrayData.getString("Title");
+                    director = jsonArrayData.getString("Director");
+                    release = jsonArrayData.getString("ReleaseDate");
+                    JSONObject jsonObject2 = jsonArrayData.getJSONObject("Rating");
+                    cRating = jsonObject2.getString("CriticRating");
+                    uRating = jsonObject2.getString("UserRating");
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.d(TAG, "Rating: " + cRating);
+            Log.d(TAG, "UserRating: " + uRating);
+            Log.d(TAG, "ReleaseDate: " + release);
+            Log.d(TAG, "Director: " + director);
+
+            // if no rating
+            if (cRating.equals("")){
+                display = "ERROR: ITEM NOT FOUND!";
+            } else{
+                display = "Title: " + title + '\n' + "Director: " + director + '\n' + "Release Date: " + release + '\n' + "MetaCritic Rating: " + cRating + '\n' + "User Rating: " + uRating;
+            }
+            return display;
         }
-        Log.d(TAG, "Rating: "+ rating);
-        return rating;
+        if (isTV){
 
+            // try catch block to receive the API data
+            try {
+                url = new URL("https://api-marcalencc-metacritic-v1.p.mashape.com/tvshow/" + search + "/%7Bseason%7D?mashape-key=IOCYZerEwKmshut8w5RvcY6usvyEp1l1U8kjsnaFeBQjtAfcC9");
+                connection = (HttpURLConnection) url.openConnection();
+
+                InputStream inputStream = connection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String line = "";
+
+                // reads in the text as a string
+                while (line != null) {
+                    line = bufferedReader.readLine();
+                    data = data + line;
+                }
+
+                JSONArray jsonArray = new JSONArray(data);
+
+                // access array
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonArrayData = jsonArray.getJSONObject(i);
+                    title = jsonArrayData.getString("Title");
+                    studio = jsonArrayData.getString("Studio");
+                    release = jsonArrayData.getString("ReleaseDate");
+                    JSONObject jsonObject2 = jsonArrayData.getJSONObject("Rating");
+                    cRating = jsonObject2.getString("CriticRating");
+                    uRating = jsonObject2.getString("UserRating");
+
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.d(TAG, "Rating: " + cRating);
+            Log.d(TAG, "UserRating: " + uRating);
+            Log.d(TAG, "ReleaseDate: " + release);
+            Log.d(TAG, "Studio: " + studio);
+
+            // if no rating
+            if (cRating.equals("")){
+                display = "ERROR: ITEM NOT FOUND!";
+            } else{
+                display = "Title: " + title + '\n' + "Studio: " + studio + '\n' + "Release Date: " + release + '\n' + "MetaCritic Rating: " + cRating + '\n' + "User Rating: " + uRating;
+            }
+            return display;
+
+        }
+        if (isAlbum){
+
+            // try catch block to receive the API data
+            try {
+                url = new URL("https://api-marcalencc-metacritic-v1.p.mashape.com/album/" + search + "/%7Byear%7D?mashape-key=IOCYZerEwKmshut8w5RvcY6usvyEp1l1U8kjsnaFeBQjtAfcC9");
+                connection = (HttpURLConnection) url.openConnection();
+
+                InputStream inputStream = connection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String line = "";
+
+                // reads in the text as a string
+                while (line != null) {
+                    line = bufferedReader.readLine();
+                    data = data + line;
+                }
+
+                JSONArray jsonArray = new JSONArray(data);
+
+                // access array
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonArrayData = jsonArray.getJSONObject(i);
+                    artist = jsonArrayData.getString("PrimaryArtist");
+                    title = jsonArrayData.getString("Title");
+                    release = jsonArrayData.getString("ReleaseDate");
+                    JSONObject jsonObject2 = jsonArrayData.getJSONObject("Rating");
+                    cRating = jsonObject2.getString("CriticRating");
+                    uRating = jsonObject2.getString("UserRating");
+
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.d(TAG, "Rating: " + cRating);
+            Log.d(TAG, "UserRating: " + uRating);
+            Log.d(TAG, "ReleaseDate: " + release);
+            Log.d(TAG, "Primary Artist: " + artist);
+
+            // if no rating
+            if (cRating.equals("")){
+                display = "ERROR: ITEM NOT FOUND!";
+            } else{
+                display = "Title: " + title + '\n' + "Primary Artist: " + artist + '\n' + "Release Date: " + release + '\n' + "MetaCritic Rating: " + cRating + '\n' + "User Rating: " + uRating;
+            }
+            return display;
+
+        }
+
+        return null;
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+
     }
 }

@@ -1,13 +1,9 @@
 package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +25,7 @@ public class HomeScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_blank, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_home_screen, container, false);
         super.onCreate(savedInstanceState);
 
         review = (Button) rootView.findViewById(R.id.find_review);
@@ -48,6 +44,7 @@ public class HomeScreenFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), FavoritesActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -70,6 +67,6 @@ public class HomeScreenFragment extends Fragment {
         });
         // Inflate the layout for this fragment
         return rootView;
-       // return inflater.inflate(R.layout.fragment_blank, container, false);
+       // return inflater.inflate(R.layout.fragment_home_screen, container, false);
     }
 }

@@ -12,83 +12,80 @@ import java.util.ArrayList;
 import static android.content.ContentValues.TAG;
 
 public class FavoritesSQL extends SQLiteOpenHelper {
-    public static final String MY_TABLE = "review_table";
-    public static final String ID1 = "ID";
-    private static final String ID2 = "name";
-    private static final String ID3 = "genre";
-    public static ArrayList list;
+    private static final String DB_NAME = "favorites"; // name of the database
+    private static final String COL1 = "rating"; // rating
+    private static final int DB_VERSION = 1; // version of the database
+    public static ArrayList<String> listData; // public variable is needed to access database
 
-    //constructed required by helper
-    public FavoritesSQL(Context context) {
-        super(context, MY_TABLE, null, 1);
+    //constructor
+    public FavoritesSQL(Context context){
+        super(context, DB_NAME,null, DB_VERSION);
     }
 
+    // creates the table database
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + MY_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                ID2 + " TEXT)";
-        db.execSQL(createTable);
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String createTable = "CREATE TABLE " + DB_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL1 + " TEXT)";
+        sqLiteDatabase.execSQL(createTable);
+
     }
 
+    // updates the table
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP IF TABLE EXISTS " + MY_TABLE);
-        onCreate(db);
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DB_NAME);
+        onCreate(sqLiteDatabase);
+
     }
 
-    // adds data to the SQL data base. Called in Trivia activity
-    public boolean addData(String item) {
+    // adds the data to the table
+    public boolean addData(String item){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(ID2, item);
-        long result = db.insert(MY_TABLE, null, contentValues);
+        ContentValues favoriteValues = new ContentValues();
+        favoriteValues.put(COL1, item);
 
-        //if date as inserted incorrectly it will return -1
-        if (result == -1) {
+        long result = db.insert(DB_NAME, null, favoriteValues);
+
+        // checks to see if data was added to database correctly
+        if (result == -1){
             return false;
         } else {
             return true;
         }
     }
 
-    // Returns all data from database
-    public Cursor getData() {
+    //returns all data from database
+    public Cursor getData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + MY_TABLE;
+        String query = "SELECT * FROM " + DB_NAME;
         Cursor data = db.rawQuery(query, null);
         return data;
     }
 
+    // deletes a specific joke from table database
+    public void deleteRating(String rating){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(DB_NAME, "rating = ?", new String[]{rating});
+
+    }
 
     // deletes all rows from table database
-    public void deleteAll() {
+    public void deleteAll(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(MY_TABLE, null, null);
+        db.delete(DB_NAME, null, null);
     }
 
-
-    /**
-     * Returns only the ID that matches the name passed in
-     *
-     * @param name
-     * @return
-     */
-    public Cursor getItemID(String name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + ID1 + " FROM " + MY_TABLE +
-                " WHERE " + ID2 + " = '" + name + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
-    //deleted first item in database
-    public void deleteEntry() {
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.query(MY_TABLE, null, null, null, null, null, null);
-
-        if (cursor.moveToLast()) {
-            long rowId = cursor.getLong(cursor.getColumnIndex(ID1));
-            database.delete(MY_TABLE, ID1 + "=" + rowId, null);
+    // fills the ArrayList with data from the table database
+    public void populate(){
+        //get data and append it to the list
+        Cursor data = getData();
+        listData = new ArrayList<>();
+        while (data.moveToNext()){
+            // get data from column 1
+            // add it to list
+            listData.add(data.getString(1));
         }
     }
+
 }

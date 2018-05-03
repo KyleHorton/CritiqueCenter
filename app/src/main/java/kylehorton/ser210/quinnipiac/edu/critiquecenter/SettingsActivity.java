@@ -158,6 +158,9 @@ public class SettingsActivity extends AppCompatActivity {
             return true;
         }
         if (item.getItemId() == R.id.favorites){
+            Intent intent = new Intent(SettingsActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+            finish();
 
         }
         if (item.getItemId() == R.id.settings){
@@ -165,10 +168,6 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
 
-        }
-        if (item.getItemId() == R.id.add_fav){
-            Toast.makeText(SettingsActivity.this, "No review to add to favorites!",
-                    Toast.LENGTH_LONG).show();
         }
         if (item.getItemId() == R.id.share){
             Toast.makeText(SettingsActivity.this, "There's no review to share yet!",

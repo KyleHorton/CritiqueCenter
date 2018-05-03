@@ -1,5 +1,6 @@
 package kylehorton.ser210.quinnipiac.edu.critiquecenter;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,14 +42,16 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.favorites){
+            Intent intent = new Intent(AboutActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+            finish();
 
         }
         if (item.getItemId() == R.id.settings){
+            Intent intent = new Intent(AboutActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
 
-        }
-        if (item.getItemId() == R.id.add_fav){
-            Toast.makeText(AboutActivity.this, "No review to add to favorites!",
-                    Toast.LENGTH_LONG).show();
         }
         if (item.getItemId() == R.id.share){
             Toast.makeText(AboutActivity.this, "There's no review to share yet!",

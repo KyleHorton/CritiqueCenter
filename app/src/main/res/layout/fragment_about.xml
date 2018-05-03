@@ -59,7 +59,7 @@
                 <TextView
                     android:id="@+id/about2"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="150dp"
                     android:text="@string/api"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -87,7 +87,7 @@
                     <TextView
                         android:id="@+id/authors"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="150dp"
                         android:text="@string/about"
                         android:textColor="#000000"
                         android:textSize="20dp"

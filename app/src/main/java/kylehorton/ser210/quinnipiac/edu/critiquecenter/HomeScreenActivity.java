@@ -23,6 +23,7 @@ import org.w3c.dom.Text;
 
 public class HomeScreenActivity extends AppCompatActivity {
     private TextView title;
+    FavoritesSQL sql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        sql = new FavoritesSQL(this);
 
         //adds fragment to main activity
         HomeScreenFragment frag = (HomeScreenFragment) getFragmentManager().findFragmentById(R.id.home_screen_frag);
@@ -54,15 +56,11 @@ public class HomeScreenActivity extends AppCompatActivity {
     // each item has a specific action
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.favorites){
-
-        }
         if (item.getItemId() == R.id.settings){
+            Intent intent = new Intent(HomeScreenActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
 
-        }
-        if (item.getItemId() == R.id.add_fav){
-            Toast.makeText(HomeScreenActivity.this, "No review to add to favorites!",
-                    Toast.LENGTH_LONG).show();
         }
         if (item.getItemId() == R.id.share){
             Toast.makeText(HomeScreenActivity.this, "There's no review to share yet!",

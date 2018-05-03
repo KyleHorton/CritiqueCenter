@@ -44,20 +44,14 @@ public class ReviewActivity extends AppCompatActivity {
         searched.setText(getIntent().getStringExtra("searchedText"));
         searched.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
         review = (TextView) findViewById(R.id.review);
-        review.setText("Rating: " + getIntent().getStringExtra("reviewText"));
+        review.setText(getIntent().getStringExtra("reviewText"));
         review.setMovementMethod(new ScrollingMovementMethod());
         review.setTypeface(Typeface.createFromAsset(getAssets(), SettingsActivity.currText));
 
         favs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newEntry1 = searched.getText().toString();
-                String newEntry = review.getText().toString();
-                if (review.length() != 0 && searched.length() != 0) {
-                    AddData("Title: " + newEntry1 + "  " + newEntry);
-                } else {
-                    toastMessage("You must put something in this text field!");
-                }
+                addData(review.getText().toString());
             }
         });
     }
@@ -90,41 +84,36 @@ public class ReviewActivity extends AppCompatActivity {
             finish();
             return true;
         }
-        if (item.getItemId() == R.id.favorites){
-            Intent intent = new Intent(ReviewActivity.this, FavoritesActivity.class);
-            startActivity(intent);
+        if (item.getItemId() == R.id.favorites) {
+                sql.populate();
+                Intent intent = new Intent(ReviewActivity.this, FavoritesActivity.class);
+                startActivity(intent);
+                finish();
 
         }
-        if (item.getItemId() == R.id.settings){
+        if (item.getItemId() == R.id.settings) {
             Intent intent = new Intent(ReviewActivity.this, SettingsActivity.class);
             startActivity(intent);
             finish();
 
         }
-        if (item.getItemId() == R.id.add_fav){
-
-        }
-        if (item.getItemId() == R.id.share){
+        if (item.getItemId() == R.id.share) {
             setShareActionIntent("You should check out the " + SearchActivity.genre + " " + SearchActivity.search + ". It got a " +
                     "rating of " + getIntent().getStringExtra("reviewText") + " from Metacritics!");
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void AddData(String newEntry) {
-        boolean insertData = sql.addData(newEntry);
-        if (insertData) {
-            toastMessage("Review added to your favorites!");
-        } else {
-            toastMessage("ERROR: Value not found!");
-        }
-    }
+    // adds data to the database and notifies the user if successful
+    public void addData(String item) {
+        boolean dataInserted = sql.addData(item);
 
-    /**
-     * customizable toast
-     * @param message
-     */
-    private void toastMessage(String message){
-        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
+        if (dataInserted) {
+            Toast.makeText(ReviewActivity.this, "Rating added to favorites!",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(ReviewActivity.this, "Oops! Something went wrong!",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
